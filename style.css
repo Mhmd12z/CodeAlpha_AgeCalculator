@@ -1,0 +1,261 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --section-padding: 30px;
+  --main-color: #f2aa4cff;
+  --primary-color: #101820ff;
+  --transition: all 0.3s ease-in-out;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
+}
+
+ul {
+  list-style: none;
+}
+
+.card {
+  background-color: var(--primary-color);
+  padding: 25px;
+  border-radius: 10px 10px 180px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.card .form {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  display: flex;
+  gap: 20px;
+  padding-right: 150px;
+  position: relative;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.405);
+}
+
+@keyframes feature {
+  25% {
+    border-color: #eee transparent transparent transparent;
+  }
+
+  50% {
+    border-color: #eee #eee transparent transparent;
+  }
+
+  75% {
+    border-color: #eee #eee #eee transparent;
+  }
+
+  100% {
+    border-color: #eee #eee #eee #eee;
+  }
+}
+
+.card button {
+  width: fit-content;
+  position: absolute;
+  bottom: -35px;
+  right: 0;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--main-color);
+  border: 5px solid transparent;
+}
+
+.card button:hover {
+  animation-name: feature;
+  animation-duration: .3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+
+.card img {
+  width: 50px;
+}
+
+.card .form label {
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+.card .form li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card input {
+  padding: 15px 10px;
+  font-size: 20px;
+  font-weight: 700;
+  width: 150px;
+  color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.44);
+}
+
+.card .result {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+.card .result h1 {
+  font-size: 70px;
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+.card .result h1 span {
+  color: #eee;
+}
+
+.card .container .title-heading {
+  font-size: 35px;
+  text-align: center;
+  color: var(--main-color);
+  text-transform: uppercase;
+  border: 1px solid var(--main-color);
+  border-radius: 30px;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+  transition: var(--transition);
+}
+
+.card .container .title-heading:hover {
+  color: white;
+}
+
+@keyframes go-right {
+  0% {
+    left: -40px;
+    border-radius: 50%;
+  }
+
+  50% {
+    left: 0px;
+    border-radius: 50%;
+  }
+
+  100% {
+    left: 0;
+    border-radius: 30px 0 0 30px;
+    width: 50%;
+    height: 100%;
+  }
+}
+
+@keyframes go-left {
+  0% {
+    right: -40px;
+    border-radius: 50%;
+  }
+
+  50% {
+    right: 0px;
+    border-radius: 50%;
+  }
+
+  100% {
+    right: 0;
+    border-radius: 0 30px 30px 0;
+    width: 50%;
+    height: 100%;
+  }
+}
+
+.card .title-heading::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.card .title-heading:hover::before {
+  animation: go-right 0.3s ease-in-out;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+}
+
+.card .title-heading::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.card .title-heading:hover::after {
+  animation: go-left 0.3s ease-in-out;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+}
+
+@media (max-width: 767px) {
+  .card {
+    border-radius: 30px 30px 180px 180px;
+  }
+
+  .card button {
+    width: 70px;
+    height: 70px;
+  }
+
+  .card .form {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-right: 0;
+    padding-bottom: 50px;
+  }
+
+  .card .result {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card .result h1 {
+    font-size: 60px;
+  }
+
+  .title-heading {
+    font-size: 20px !important;
+  }
+}
